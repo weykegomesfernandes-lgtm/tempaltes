@@ -17,10 +17,22 @@
 /* Letterhead com veia de sangue na borda */
 .kmo-letterhead{ position:relative; z-index:2; padding:16px 30px; border-bottom:1px solid var(--kmo-hair);
   font-family:'Special Elite',monospace; font-size:.68em; letter-spacing:3px; color:var(--kmo-ink-dim);
-  text-transform:uppercase; border-left:3px solid var(--kmo-blood); overflow:visible; }
-.kmo-letterhead::after{ content:''; position:absolute; left:-3px; top:100%; width:5px; height:5px;
-  background:var(--kmo-blood-bright); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow:0 0 5px rgba(194,28,38,.6); animation:kmo-drip-short 5s infinite ease-in; z-index:4; }
+  text-transform:uppercase; border-left:3px solid var(--kmo-blood); }
+
+/* Fluxo contínuo de sangue escorrendo pelas bordas laterais do card inteiro */
+.kmo-edge{ position:absolute; top:0; bottom:0; width:5px; z-index:6; pointer-events:none; opacity:.65;
+  background-image:
+    radial-gradient(ellipse 2px 9px at 50% 6%, var(--kmo-blood-bright) 0%, var(--kmo-blood-bright) 40%, transparent 75%),
+    radial-gradient(ellipse 1.5px 7px at 50% 34%, var(--kmo-blood-bright) 0%, var(--kmo-blood-bright) 40%, transparent 75%),
+    radial-gradient(ellipse 2.5px 12px at 50% 58%, var(--kmo-blood-bright) 0%, var(--kmo-blood-bright) 40%, transparent 75%),
+    radial-gradient(ellipse 1.5px 6px at 50% 82%, var(--kmo-blood-bright) 0%, var(--kmo-blood-bright) 40%, transparent 75%);
+  background-size:100% 230px; background-repeat:repeat-y;
+  filter:drop-shadow(0 0 2px rgba(194,28,38,.6));
+  animation:kmo-edge-flow 7s linear infinite;
+}
+.kmo-edge.left{ left:-2px; }
+.kmo-edge.right{ right:-2px; }
+@keyframes kmo-edge-flow{ 0%{ background-position-y:0; } 100%{ background-position-y:230px; } }
 
 /* Selo institucional */
 .kmo-seal{ position:absolute; z-index:6; bottom:-34px; right:30px; width:84px; height:84px; border-radius:50%;
@@ -33,11 +45,8 @@
 .kmo-grid{ position:relative; z-index:2; display:grid; grid-template-columns:230px 1fr; }
 @media (max-width:560px){ .kmo-grid{ grid-template-columns:1fr; } }
 
-.kmo-photo-col{ position:relative; padding:30px 26px; border-right:1px solid var(--kmo-hair); display:flex; flex-direction:column; gap:14px; }
+.kmo-photo-col{ padding:30px 26px; border-right:1px solid var(--kmo-hair); display:flex; flex-direction:column; gap:14px; }
 @media (max-width:560px){ .kmo-photo-col{ border-right:none; border-bottom:1px solid var(--kmo-hair); } }
-.kmo-photo-col::after{ content:''; position:absolute; right:-2px; top:40%; width:4px; height:4px;
-  background:var(--kmo-blood-bright); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow:0 0 4px rgba(194,28,38,.55); animation:kmo-drip-short 6.5s infinite ease-in; animation-delay:2s; z-index:4; }
 .kmo-photo-frame{ position:relative; border:1px solid var(--kmo-hair); padding:6px; background:var(--kmo-panel); }
 .kmo-photo-frame img{ width:100%; height:250px; object-fit:cover; object-position:center top;
   filter:grayscale(1) contrast(1.1) brightness(.85) sepia(.15) hue-rotate(-30deg); display:block; }
@@ -66,7 +75,7 @@
 /* Unidade de gotejamento - acumula e cai numa poça, logo acima das Considerações */
 .kmo-drip-unit{ position:relative; z-index:2; height:40px; margin:0 32px; display:flex; flex-direction:column;
   align-items:center; justify-content:flex-end; }
-.kmo-vein-mini{ position:relative; width:2px; height:20px; background:linear-gradient(to bottom, transparent, var(--kmo-blood) 75%); }
+.kmo-vein-mini{ position:relative; width:2px; height:30px; background:linear-gradient(to bottom, transparent, var(--kmo-blood) 75%); }
 .kmo-drop{ position:absolute; left:50%; top:0; width:6px; height:9px; margin-left:-3px;
   background:var(--kmo-blood-bright); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
   box-shadow:0 0 5px rgba(194,28,38,.65); animation:kmo-accumulate-drip 4.5s infinite ease-in; }
@@ -86,12 +95,6 @@
   93%{ opacity:.3; }
   100%{ opacity:0; top:100%; }
 }
-@keyframes kmo-drip-short{
-  0%{ transform:translateY(0) scale(.5); opacity:0; }
-  15%{ transform:translateY(0) scale(1); opacity:.9; }
-  70%{ transform:translateY(14px) scale(.9); opacity:.5; }
-  100%{ transform:translateY(18px) scale(.7); opacity:0; }
-}
 @keyframes kmo-pool-ripple{
   0%,78%{ transform:scale(1); }
   85%{ transform:scale(1.08); }
@@ -99,7 +102,7 @@
   100%{ transform:scale(1); }
 }
 @media (prefers-reduced-motion: reduce){
-  .kmo-drop, .kmo-pool, .kmo-letterhead::after, .kmo-photo-col::after{ animation:none; }
+  .kmo-drop, .kmo-pool, .kmo-edge{ animation:none; }
 }
 
 /* Considerações (drawer) */
