@@ -59,7 +59,7 @@
 .toji-drawer { margin: 0 40px 40px; position: relative; z-index: 10; }
 .toji-drawer > summary { list-style: none; cursor: pointer; padding: 15px; background: #151515; font-family: 'Oswald', sans-serif; letter-spacing: 4px; color: var(--toji-green); text-align: center; font-size: 14px; border: 1px solid #1a1a1f; }
 .toji-drawer > summary::before { content: attr(data-label); }
-.toji-drawer[open] > summary::before { content: 'CLOSE_FILE'; }
+.toji-drawer[open] > summary::before { content: 'EXECUÇÃO CONFIRMADA'; }
 
 /* Conteúdo Spoiler */
 .toji-content { padding: 25px; background-color: #080808 !important; background-image: none !important; border: 1px solid #1a1a1f; border-top: none; position: relative; z-index: 10; }
@@ -90,6 +90,30 @@
 .toji-pill { background: #111; border: 1px solid #333; padding: 4px 10px; color: #fff; font-size: 0.85em; }
 .toji-item { background: #0f0f0f; padding: 12px; margin-bottom: 8px; border: 1px solid #1a1a1f; font-size: 0.85em; color: #ccc; }
 .toji-item b { color: var(--toji-green); text-shadow: none; }
+
+/* Cards de Técnica/Item (Inventário Oculto) */
+.toji-tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; }
+.toji-tech-card { display: flex; flex-direction: column; background: #0f0f0f; border: 1px solid #1a1a1f; box-shadow: 0 4px 15px rgba(0,0,0,0.8); position: relative; overflow: hidden; cursor: help; height: 180px; }
+.toji-tech-base { display: flex; height: 100%; width: 100%; }
+.toji-tech-img-wrap { width: 40%; height: 100%; border-right: 1px solid #222; background: #000; flex-shrink: 0; }
+.toji-tech-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.3) brightness(0.7); }
+.toji-tech-data { flex: 1; padding: 12px; display: flex; flex-direction: column; justify-content: center; gap: 8px; background: #0a0a0a; overflow: hidden; }
+.toji-tech-name { font-family: 'Oswald', sans-serif; font-size: 0.95em; font-weight: bold; color: var(--toji-green); text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 6px; margin-bottom: 4px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toji-tech-stat { display: flex; flex-direction: column; gap: 4px; }
+.toji-s-head { display: flex; justify-content: space-between; gap: 8px; font-size: 0.72em; font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #888; text-transform: uppercase; }
+.toji-s-val { color: #eee; white-space: nowrap; }
+.toji-s-track { width: 100%; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; }
+.toji-s-fill { height: 100%; background: var(--toji-green); border-radius: 2px; }
+
+.toji-tech-overlay { position: absolute; inset: 0; background: rgba(8,8,8,0.97); color: #ddd; padding: 15px; display: flex; flex-direction: column; gap: 8px; opacity: 0; visibility: hidden; transition: all 0.3s ease; overflow-y: auto; z-index: 10; border: 2px solid var(--toji-green); }
+.toji-tech-card:hover .toji-tech-overlay { opacity: 1; visibility: visible; }
+.toji-tech-card:hover .toji-tech-img-wrap img { filter: brightness(0.3) contrast(1.4); }
+.toji-tech-card:hover .toji-tech-data { filter: brightness(0.15); }
+.toji-tech-overlay::-webkit-scrollbar { width: 4px; }
+.toji-tech-overlay::-webkit-scrollbar-thumb { background: var(--toji-green); }
+.toji-sp-title { font-family: 'Oswald', sans-serif; font-size: 0.85em; color: var(--toji-green); text-transform: uppercase; border-bottom: 1px dashed var(--toji-green); padding-bottom: 4px; margin-bottom: 2px; font-weight: bold; }
+.toji-sp-text { font-size: 0.88em; line-height: 1.55; color: #bbb; text-align: justify; white-space: pre-wrap; }
+@media (max-width: 600px) { .toji-tech-grid { grid-template-columns: 1fr; } }
 
 /* Rodapé e Linha Final */
 .toji-footer { text-align: right; padding: 0 40px 45px; position: relative; z-index: 10; margin-top: 20px; }
