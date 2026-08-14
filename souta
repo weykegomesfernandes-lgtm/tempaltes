@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=JetBrains+Mono:wght@400;700&family=Italianno&family=Syncopate:wght@700&display=swap');
+
+:root {
+  --toji-bg: #0a0a0a;
+  --toji-gray: #1a1a1a;
+  --toji-green: #7d7d7d;
+  --toji-white: #e0e0e0;
+}
+
+/* Base do Card */
+.toji-card {
+  position: relative; max-width: 750px; width: 95%; margin: 50px auto;
+  background-color: var(--toji-bg); border: 1px solid #222;
+  font-family: 'JetBrains Mono', monospace; color: var(--toji-white);
+  padding: 0; overflow: hidden; box-shadow: 0 0 0 2px #111, 0 20px 50px rgba(0,0,0,0.9);
+}
+
+/* Hachuras Fundo */
+.toji-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: linear-gradient(135deg, rgba(125, 125, 125, 0.05) 25%, transparent 25%, transparent 50%, rgba(125, 125, 125, 0.05) 50%, rgba(125, 125, 125, 0.05) 75%, transparent 75%, transparent 100%);
+  background-size: 10px 10px; pointer-events: none; z-index: 1;
+}
+
+/* Header & Decoração */
+.toji-header { padding: 40px 30px 20px; background: linear-gradient(to bottom, #111, transparent); text-align: left; border-left: 8px solid var(--toji-green); position: relative; }
+.toji-title { font-family: 'Syncopate', sans-serif; font-size: 2.2em; color: #fff; line-height: 1; margin: 0; text-transform: uppercase; }
+.toji-sub { font-family: 'Oswald'; font-size: 0.9em; color: var(--toji-green); text-transform: uppercase; letter-spacing: 6px; margin-top: 5px; }
+.toji-header::before { content: 'Hunting Dog'; position: absolute; top: 15px; right: 30px; font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: bold; color: var(--toji-green); opacity: 0.05; letter-spacing: 4px; }
+.toji-header::after { content: ''; position: absolute; bottom: 20px; right: 30px; width: 50px; height: 2px; background: var(--toji-green); box-shadow: 0 0 8px var(--toji-green); opacity: 0.3; }
+
+/* Imagem */
+.toji-img-box { width: 100%; height: 400px; position: relative; border-top: 1px solid #222; border-bottom: 1px solid #222; z-index: 5; }
+.toji-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.3) brightness(0.8); transition: 0.5s; }
+.toji-card:hover .toji-img { filter: grayscale(0.8) contrast(1.1) brightness(0.9); }
+
+/* Barras Status */
+.toji-stats { padding: 30px 40px; display: flex; flex-direction: column; gap: 12px; z-index: 5; position: relative; }
+.toji-stat-row { display: flex; align-items: center; gap: 20px; }
+.toji-label { font-family: 'Oswald'; width: 50px; color: #555; font-size: 0.8em; letter-spacing: 2px; }
+.toji-bar-bg { flex-grow: 1; height: 6px; background: #111; position: relative; }
+.toji-fill { height: 100%; background: var(--toji-green); transition: width 1s ease-out; }
+.toji-val { position: absolute; right: 0; top: -18px; font-size: 0.7em; font-weight: bold; color: var(--toji-green); }
+
+/* Caixa de Texto */
+.toji-body {
+  padding: 25px; line-height: 1.8; text-align: justify; font-size: 0.85em; color: #aaa;
+  background-color: #0a0a0a !important; background-image: none !important;
+  border: 1px solid #1a1a1f; border-left: 4px solid var(--toji-green);
+  margin: 10px 40px 25px; position: relative; z-index: 10; box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+}
+.toji-tag { position: absolute; top: 5px; right: 10px; font-family: 'Oswald', sans-serif; font-size: 9px; color: var(--toji-green); opacity: 0.6; letter-spacing: 2px; }
+
+/* Formatação Textual */
+.toji-card b, .toji-card strong { color: var(--toji-green); font-weight: bold; text-shadow: 0 0 8px rgba(125, 125, 125, 0.4); border: none; }
+.toji-card i, .toji-card em { color: var(--toji-green); font-style: italic; filter: drop-shadow(0 0 2px rgba(125, 125, 125, 0.8)); opacity: 0.9; }
+
+/* Spoilers Base */
+.toji-drawer { margin: 0 40px 40px; position: relative; z-index: 10; }
+.toji-drawer > summary { list-style: none; cursor: pointer; padding: 15px; background: #151515; font-family: 'Oswald', sans-serif; letter-spacing: 4px; color: var(--toji-green); text-align: center; font-size: 14px; border: 1px solid #1a1a1f; }
+.toji-drawer > summary::before { content: attr(data-label); }
+.toji-drawer[open] > summary::before { content: 'CLOSE_FILE'; }
+
+/* Conteúdo Spoiler */
+.toji-content { padding: 25px; background-color: #080808 !important; background-image: none !important; border: 1px solid #1a1a1f; border-top: none; position: relative; z-index: 10; }
+.toji-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+.toji-lbl { font-size: 0.6em; color: var(--toji-green); font-weight: bold; margin-bottom: 4px; display: block; }
+.toji-val-box { font-size: 0.85em; color: #fff; border-bottom: 1px solid #222; padding-bottom: 4px; }
+
+/* Sub-Spoiler (Arsenal) */
+.toji-sub-drawer { margin: 15px 0 0 0; }
+.toji-sub-drawer > summary { background: #111; font-size: 12px; padding: 10px; border-color: var(--toji-green); }
+.toji-sub-drawer > summary::before { content: attr(data-label); }
+.toji-sub-drawer[open] > summary::before { content: 'ENCOBRIR'; }
+.toji-sub-drawer .toji-content { background-color: #050505 !important; border-color: var(--toji-green); }
+
+/* Injeção de Títulos (Grid & Sections) */
+.toji-section { font-family: 'Oswald'; font-size: 0.75em; color: #fff; border-left: 3px solid var(--toji-green); padding-left: 10px; margin: 20px 0 10px; text-transform: uppercase; }
+.lbl-obj::before { content: 'OBJETIVO'; }
+.lbl-pal::before { content: 'PALAVRAS'; }
+.lbl-tur::before { content: 'TURNO'; }
+.lbl-est::before { content: 'ESTILO DE VIDA'; }
+.sec-act::before { content: 'SISTEMA DE AÇÕES'; }
+.sec-res::before { content: 'RESUMO'; }
+.sec-apt::before { content: 'APTIDÕES'; }
+.sec-cal::before { content: 'CÁLCULOS'; }
+
+/* Pílulas Ações e Itens */
+.toji-pill-group { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.toji-pill { background: #111; border: 1px solid #333; padding: 4px 10px; color: #fff; font-size: 0.85em; }
+.toji-item { background: #0f0f0f; padding: 12px; margin-bottom: 8px; border: 1px solid #1a1a1f; font-size: 0.85em; color: #ccc; }
+.toji-item b { color: var(--toji-green); text-shadow: none; }
+
+/* Rodapé e Linha Final */
+.toji-footer { text-align: right; padding: 0 40px 45px; position: relative; z-index: 10; margin-top: 20px; }
+.toji-footer::after { content: "Summer"; font-family: 'Italianno', cursive; font-size: 4em; color: rgba(255,255,255,0.1); background: linear-gradient(to bottom, #fff, #333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; transition: 0.5s; }
+.toji-card:hover .toji-footer::after { color: rgba(255,255,255,0.3); transform: translateY(-5px); }
+.toji-bottom-line { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--toji-green); box-shadow: 0 -2px 15px var(--toji-green); z-index: 20; }
