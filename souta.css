@@ -86,8 +86,8 @@
 .sec-cal::before { content: 'CÁLCULOS'; }
 
 /* Pílulas Ações e Itens */
-.toji-pill-group { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-.toji-pill { background: #111; border: 1px solid #333; padding: 4px 10px; color: #fff; font-size: 0.85em; }
+.toji-pill-group { display: flex; gap: 14px; margin-bottom: 20px; }
+.toji-pill { flex: 1; text-align: center; background: #111; border: 1px solid #333; padding: 4px 10px; color: #fff; font-size: 0.85em; }
 .toji-item { background: #0f0f0f; padding: 12px; margin-bottom: 8px; border: 1px solid #1a1a1f; font-size: 0.85em; color: #ccc; }
 .toji-item b { color: var(--toji-green); text-shadow: none; }
 
