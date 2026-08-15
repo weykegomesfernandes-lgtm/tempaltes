@@ -101,9 +101,6 @@
   93%{ transform:scale(1); }
   100%{ transform:scale(1); }
 }
-@media (prefers-reduced-motion: reduce){
-  .kmo-drop, .kmo-pool, .kmo-edge{ animation:none; }
-}
 
 /* Considerações (drawer) */
 .kmo-drawer{ position:relative; z-index:2; margin:6px 32px 34px; }
