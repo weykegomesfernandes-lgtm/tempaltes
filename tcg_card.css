@@ -11,11 +11,17 @@
 .tcg-card.epic .tcg-body{ position:absolute; left:0; right:0; bottom:0; z-index:3;
   background:linear-gradient(to top, rgba(10,10,16,.97) 0%, rgba(10,10,16,.88) 50%, transparent 100%); padding-top:60px; }
 
-/* Lendária: full art + brilho dourado animado + reflexo */
+/* Lendária: full art + brilho dourado animado + foil holográfico + reflexo */
 .tcg-card.legendary{ height:480px; border:1px solid rgba(255,215,0,.5); animation:tcg-legend-glow 2.6s ease-in-out infinite; }
 .tcg-card.legendary .tcg-img-wrap{ position:absolute; inset:0; height:100%; }
 .tcg-card.legendary .tcg-body{ position:absolute; left:0; right:0; bottom:0; z-index:3;
   background:linear-gradient(to top, rgba(10,10,16,.97) 0%, rgba(10,10,16,.88) 50%, transparent 100%); padding-top:60px; }
+.tcg-card.legendary::before{ content:''; position:absolute; inset:0; z-index:5; pointer-events:none;
+  background-image:repeating-linear-gradient(115deg,
+    rgba(255,0,150,.35) 0%, rgba(255,175,0,.35) 8%, rgba(0,255,170,.35) 16%,
+    rgba(0,160,255,.35) 24%, rgba(190,0,255,.35) 32%, rgba(255,0,150,.35) 40%);
+  background-size:250% 250%; mix-blend-mode:color-dodge; opacity:.6;
+  animation:tcg-holo-shift 5s ease-in-out infinite; }
 .tcg-card.legendary::after{ content:''; position:absolute; top:0; left:-60%; width:40%; height:100%;
   background:linear-gradient(115deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);
   transform:skewX(-20deg); animation:tcg-shine-sweep 3.4s ease-in-out infinite; z-index:6; pointer-events:none; }
@@ -23,6 +29,7 @@
   0%,100%{ box-shadow:0 25px 50px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04) inset, 0 0 18px 2px rgba(255,215,0,.35), 0 0 40px 6px rgba(255,215,0,.15); }
   50%{ box-shadow:0 25px 50px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04) inset, 0 0 26px 4px rgba(255,215,0,.6), 0 0 55px 10px rgba(255,215,0,.3); }
 }
+@keyframes tcg-holo-shift{ 0%,100%{ background-position:0% 30%; } 50%{ background-position:100% 70%; } }
 @keyframes tcg-shine-sweep{ 0%{ left:-60%; } 45%{ left:140%; } 100%{ left:140%; } }
 
 .tcg-img-wrap{ position:relative; width:100%; height:260px; background:#000; }
