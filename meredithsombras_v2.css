@@ -1,0 +1,122 @@
+/* --- TEMPLATE DE POSTAGEM - MEREDITH ZENIN (DEZ SOMBRAS / MAHORAGA) --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Yuji+Syuku&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg: #030304;
+  --text: #c8c8cc;
+  --accent: #d4af37;      /* Dourado Mahoraga */
+  --accent-dark: #8a7322;
+  --highlight: #f4e8c1;
+  --hp-color: #9c27b0;
+  --san-color: #78909c;
+  --text-muted: #888a99;
+}
+
+/* O Container Principal - Estrutura Totalmente Nova */
+.shdw-post { 
+  box-sizing: border-box; max-width: 720px; width: 95%; margin: 40px auto; 
+  background: #060608; border: 1px solid rgba(212, 175, 55, 0.1); border-top: 3px solid var(--accent); 
+  position: relative; color: var(--text); font-family: 'Inter', sans-serif; 
+  box-shadow: 0 15px 50px rgba(0,0,0,0.9); overflow: hidden; 
+}
+.shdw-post * { box-sizing: border-box; }
+
+/* Roda do Makora SVG Background */
+.shdw-post::before { 
+  content: ''; position: absolute; top: -100px; right: -100px; width: 450px; height: 450px; 
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%23d4af37' stroke-width='4'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Cg stroke='%23d4af37' stroke-width='4'%3E%3Cline x1='100' y1='10' x2='100' y2='190' /%3E%3Cline x1='10' y1='100' x2='190' y2='100' /%3E%3Cline x1='36' y1='36' x2='164' y2='164' /%3E%3Cline x1='36' y1='164' x2='164' y2='36' /%3E%3C/g%3E%3Cg fill='%23d4af37'%3E%3Ccircle cx='100' cy='10' r='8'/%3E%3Ccircle cx='100' cy='190' r='8'/%3E%3Ccircle cx='10' cy='100' r='8'/%3E%3Ccircle cx='190' cy='100' r='8'/%3E%3Ccircle cx='36' cy='36' r='8'/%3E%3Ccircle cx='164' cy='164' r='8'/%3E%3Ccircle cx='36' cy='164' r='8'/%3E%3Ccircle cx='164' cy='36' r='8'/%3E%3C/g%3E%3C/svg%3E"); 
+  background-size: cover; opacity: 0.04; animation: spin-wheel 40s linear infinite; z-index: 0; pointer-events: none; 
+}
+@keyframes spin-wheel { 100% { transform: rotate(360deg); } }
+
+/* Cabeçalho Split / Banner */
+.shdw-head { height: 300px; display: flex; align-items: flex-end; padding: 30px; position: relative; z-index: 1; }
+.shdw-bg { position: absolute; inset: 0; background-size: cover; background-position: center 38%; filter: grayscale(30%) sepia(20%); z-index: -1; }
+.shdw-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #060608 4%, transparent 60%), linear-gradient(to bottom, #060608 0%, transparent 22%), linear-gradient(to right, rgba(6,6,8,.92) 0%, transparent 48%); }
+.shdw-title-wrap { position: relative; z-index: 2; border-left: 2px solid var(--accent); padding-left: 15px; }
+.shdw-title { font-family: 'Yuji Syuku', serif; font-size: 38px; color: var(--highlight); margin: 0; line-height: 1.1; text-shadow: 0 4px 15px rgba(0,0,0,0.9); }
+.shdw-subtitle { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; margin-top: 8px; }
+
+/* Status Ribbon (HUD Minimalista) */
+.shdw-ribbon { display: flex; background: rgba(0,0,0,0.8); border-bottom: 1px solid rgba(212, 175, 55, 0.1); position: relative; z-index: 2; }
+.shdw-ribbon-item { flex: 1; display: flex; align-items: center; padding: 12px 20px; gap: 12px; border-right: 1px solid rgba(212, 175, 55, 0.1); }
+.shdw-ribbon-item:last-child { border-right: none; }
+.shdw-lbl { font-family: 'Share Tech Mono', monospace; font-size: 13px; font-weight: bold; color: var(--highlight); width: 25px; }
+.shdw-bar-track { flex-grow: 1; height: 3px; background: #222; position: relative; overflow: hidden; }
+.shdw-bar-fill { height: 100%; position: absolute; left: 0; top: 0; transition: width 0.5s ease; }
+.shdw-bar-hp { background: var(--hp-color); box-shadow: 0 0 8px var(--hp-color); }
+.shdw-bar-ea { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.shdw-bar-san { background: var(--san-color); box-shadow: 0 0 8px var(--san-color); }
+.shdw-val { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #fff; }
+
+/* Invocação das Sombras (Sem vazar os cantos) */
+.shdw-invocations { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 25px 30px 10px; position: relative; z-index: 2; }
+.shdw-item { position: relative; display: inline-block; }
+.shdw-diamond { width: 44px; height: 44px; transform: rotate(45deg); overflow: hidden; border: 1px solid var(--accent-dark); cursor: pointer; transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 5px 15px rgba(0,0,0,0.8); background: #000; display: flex; align-items: center; justify-content: center; }
+.shdw-diamond img { width: 150%; height: 150%; object-fit: cover; opacity: 0.5; transform: rotate(-45deg); transition: 0.3s; }
+.shdw-item:hover .shdw-diamond { border-color: var(--highlight); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); transform: rotate(45deg) scale(1.1); }
+.shdw-item:hover .shdw-diamond img { opacity: 1; filter: sepia(0.3); }
+
+/* Tooltip das Sombras */
+.shdw-tooltip { position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%) translateY(10px); width: 170px; background: rgba(7, 7, 10, 0.98); border: 1px solid var(--accent-dark); padding: 15px; opacity: 0; visibility: hidden; transition: all 0.3s; box-shadow: 0 15px 30px rgba(0,0,0,0.9); z-index: 100; border-radius: 2px; }
+.shdw-item:hover .shdw-tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.shdw-tooltip::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 8px; height: 8px; background: rgba(7, 7, 10, 0.98); border-right: 1px solid var(--accent-dark); border-bottom: 1px solid var(--accent-dark); }
+.shdw-tt-name { font-family: 'Share Tech Mono', monospace; font-weight: bold; color: var(--highlight); margin-bottom: 10px; text-transform: uppercase; border-bottom: 1px dashed rgba(212, 175, 55, 0.3); padding-bottom: 5px; font-size: 12px; text-align: center; }
+.shdw-tt-stat { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; font-family: 'Inter', sans-serif;}
+.shdw-tt-stat span:last-child { color: #fff; font-family: 'Share Tech Mono', monospace; }
+
+/* Corpo da Postagem (Narração) */
+.shdw-body { padding: 20px 35px 30px; font-size: 14px; line-height: 1.8; color: var(--text); text-align: justify; position: relative; z-index: 2; }
+.shdw-body p { margin: 0 0 1.2em; }
+.shdw-body p:last-child { margin: 0; }
+.shdw-body b, .shdw-body strong { color: #fff; text-shadow: 0 0 3px rgba(255,255,255,0.1); }
+.shdw-body i, .shdw-body em { color: var(--highlight); font-style: italic; }
+
+/* Dossier (Sistema - Estilo Terminal Zenin) */
+.shdw-dossier { margin: 0 35px 35px; border: 1px solid rgba(212, 175, 55, 0.15); background: rgba(0,0,0,0.5); position: relative; z-index: 2; }
+.shdw-dossier > summary { padding: 15px 20px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-size: 13px; font-weight: bold; color: var(--highlight); text-transform: uppercase; list-style: none; display: flex; align-items: center; background: rgba(212, 175, 55, 0.05); }
+.shdw-dossier > summary::-webkit-details-marker { display: none; }
+.shdw-dossier > summary::before { content: '[ + ]'; margin-right: 12px; color: var(--accent); }
+.shdw-dossier[open] > summary::before { content: '[ - ]'; }
+.shdw-dossier-inner { padding: 25px; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+
+/* Dados Táticos */
+.shdw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; }
+.shdw-grid-item { border-left: 2px solid var(--accent-dark); padding-left: 12px; }
+.shdw-grid-lbl { display: block; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 3px; }
+.shdw-grid-val { font-size: 13px; color: #fff; }
+.shdw-grid-val a { color: var(--highlight); text-decoration: none; }
+
+/* Pontos de Ação */
+.shdw-actions { display: flex; justify-content: space-between; padding: 15px 30px; background: rgba(212, 175, 55, 0.03); border: 1px solid rgba(212, 175, 55, 0.08); margin-bottom: 30px; }
+.shdw-act { text-align: center; }
+.shdw-act-lbl { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-muted); text-transform: uppercase; display: block; }
+.shdw-act-val { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: bold; color: #fff; display: block; margin-top: 5px; }
+
+/* Blocos de Texto (Considerações, Cálculos, etc) */
+.shdw-block { margin-bottom: 25px; }
+.shdw-block:last-child { margin-bottom: 0; }
+.shdw-block-title { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--accent); text-transform: uppercase; border-bottom: 1px dashed rgba(212, 175, 55, 0.2); padding-bottom: 6px; margin-bottom: 12px; letter-spacing: 1px; }
+.shdw-block-content { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+.shdw-list-item { margin-bottom: 8px; padding-left: 15px; position: relative; }
+.shdw-list-item::before { content: '»'; position: absolute; left: 0; color: var(--accent-dark); font-family: 'Share Tech Mono'; }
+
+/* Sub-Dossiês (Inventário/Técnicas) */
+.shdw-subdossier { margin-top: 15px; border: 1px solid rgba(255,255,255,0.03); background: rgba(0,0,0,0.3); }
+.shdw-subdossier > summary { padding: 12px 15px; font-size: 11px; font-family: 'Share Tech Mono'; color: var(--text-muted); text-transform: uppercase; cursor: pointer; }
+.shdw-subdossier b { color: #fff; }
+
+/* Assinatura CSS */
+.shdw-post::after {
+  content: "Meredith Zenin"; display: block; text-align: right;
+  font-family: 'Share Tech Mono', monospace; color: var(--accent-dark);
+  font-size: 12px; opacity: 0.5; padding: 0 35px 35px; letter-spacing: 4px;
+  text-transform: uppercase; position: relative; z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .shdw-grid { grid-template-columns: 1fr 1fr; }
+  .shdw-ribbon { flex-direction: column; }
+  .shdw-ribbon-item { border-right: none; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+  .shdw-ribbon-item:last-child { border-bottom: none; }
+}
