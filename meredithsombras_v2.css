@@ -25,7 +25,7 @@
 .shdw-post::before { 
   content: ''; position: absolute; top: -100px; right: -100px; width: 450px; height: 450px; 
   background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%23d4af37' stroke-width='4'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Cg stroke='%23d4af37' stroke-width='4'%3E%3Cline x1='100' y1='10' x2='100' y2='190' /%3E%3Cline x1='10' y1='100' x2='190' y2='100' /%3E%3Cline x1='36' y1='36' x2='164' y2='164' /%3E%3Cline x1='36' y1='164' x2='164' y2='36' /%3E%3C/g%3E%3Cg fill='%23d4af37'%3E%3Ccircle cx='100' cy='10' r='8'/%3E%3Ccircle cx='100' cy='190' r='8'/%3E%3Ccircle cx='10' cy='100' r='8'/%3E%3Ccircle cx='190' cy='100' r='8'/%3E%3Ccircle cx='36' cy='36' r='8'/%3E%3Ccircle cx='164' cy='164' r='8'/%3E%3Ccircle cx='36' cy='164' r='8'/%3E%3Ccircle cx='164' cy='36' r='8'/%3E%3C/g%3E%3C/svg%3E"); 
-  background-size: cover; opacity: 0.04; animation: spin-wheel 40s linear infinite; z-index: 0; pointer-events: none; 
+  background-size: cover; opacity: 0.04; animation: spin-wheel 40s linear infinite; z-index: 3; pointer-events: none; 
 }
 @keyframes spin-wheel { 100% { transform: rotate(360deg); } }
 
